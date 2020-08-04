@@ -13,8 +13,16 @@
         public function getLastName(){
             return $this->lastName;
         }
+        public function equals(FullName $other){
+            if ($other->getFirstName()===$this->firstName && 
+            $other->getLastName()===$this->lastName){
+                return True;
+            }
+            return False;
+        }
     }
 
-$name = new FullName("taro","tanaka");
-var_dump($name->getFirstName());
-var_dump($name->getLastName());
+$name1 = new FullName("taro","tanaka");
+$name2 = new FullName("taro","takagi");
+var_dump($name1->equals($name2));
+
