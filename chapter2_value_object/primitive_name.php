@@ -1,3 +1,6 @@
 <?php
 $fullName = "taro yamada";
-echo $fullName;
+$token = explode(" ",$fullName);
+$lastName = $token[0];
+echo $lastName;
+
