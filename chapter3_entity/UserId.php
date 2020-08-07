@@ -1,5 +1,4 @@
 <?php
-
 class UserId{
     private $value;
     function __construct(string $value){

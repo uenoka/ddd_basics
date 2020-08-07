@@ -19,11 +19,3 @@ include('UserId.php');
             return false;
         }
     }
-
-$userId = new UserId(1234);
-$user = new User($userId,"tanaka taro");
-
-$userId2 = new UserId(1234);
-$user2 = new User($userId2,"tanaka taro");
-$issame = $user->equals($user2);
-var_dump($issame);
