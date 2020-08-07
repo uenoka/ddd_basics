@@ -4,10 +4,14 @@ require 'User.php';
 require 'UserSearvice.php';
 require 'UserName.php';
 
-$userId = new UserId(1234);
-$userName = new UserName('tanaka');
-$user = new User($userId,$userName);
-$userSearvice = new UserSearvice();
-if($userSearvice->exists($user)){
-    echo 'ユーザーが存在しています';
+class Main{
+    public function createUser(String $id ,String $userName){
+        $user = new User(new UserId($id), new UserName($userName));
+        $userSearvice = new UserSearvice();
+        if($userSearvice->exists($user)){
+            throw new Excetion('ユーザーが存在しています');
+        }
+        // ここから具体的なSQL書いたりの処理が続く
+
+    }
 }
