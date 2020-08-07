@@ -1,6 +1,6 @@
 <?php
 class UserSearvice{
-    public exists(User $user){
+    public function exists(User $user){
         return true;
     }
 }

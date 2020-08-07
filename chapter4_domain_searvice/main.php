@@ -1,7 +1,7 @@
 <?php
-include('../chapter3_entity/User.php');
-include('../chapter3_entity/UserId.php');
-include('UserSearvice.php');
+require '../chapter3_entity/User.php';
+require '../chapter3_entity/UserId.php';
+require 'UserSearvice.php';
 
 $userId = new UserId(1234);
 $user = new User($userId,"tanaka taro");

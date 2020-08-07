@@ -1,6 +1,4 @@
 <?php
-include('UserId.php');
-
     class User{
         private $name;
         private $userId;
