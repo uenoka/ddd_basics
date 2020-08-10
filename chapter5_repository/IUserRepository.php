@@ -1,6 +1,7 @@
 <?php
     interface IUserRepository{
         function save(User $user);
-        function find(UserName $name);
+        function findByName(UserName $name);
+        function findById(UserId $id);
         function delete(UserId $id);
     }

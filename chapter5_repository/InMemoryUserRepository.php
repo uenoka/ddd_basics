@@ -2,7 +2,7 @@
 require 'IUserRepository.php';
     class InMemoryUserRepository implements IUserRepository{
         public $store = array();
-        public function find(UserName $name){
+        public function findByName(UserName $name){
             $result = in_array($name->toString(),$this->store);
             if($result){
                 echo "found user\n";
@@ -22,4 +22,8 @@ require 'IUserRepository.php';
             unset($this->store[$id->toString()]);
             var_dump($this->store);
         }
+        public function findById(UserId $id){
+            return array_key_exists($id->toString(),$this->store);
+        }
+        
     }

@@ -5,7 +5,7 @@ class UserSearvice{
         $this->userRepository = $userRepository;
     }
     public function exists(User $user){
-        $found = $this->userRepository->find($user->getName());
+        $found = $this->userRepository->findByName($user->getName());
         return $found != null;
     }
 }

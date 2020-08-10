@@ -21,11 +21,11 @@ class Main{
             $this->userRepository->save($user);
         }
     }
-    public function deleteUser(String $id ,String $userName){
-        $user = new User(new UserId($id), new UserName($userName));
-        $userSearvice = new UserSearvice($this->userRepository);
-        if($userSearvice->exists($user)){// exists だと名前で検索して意図しない判定がされる
-            $this->userRepository->delete($user->getUserId());
+    public function deleteUser(String $id){
+        $id = new UserId($id);
+        if($this->userRepository->findById($id)){
+            echo "id : " . $id->toString() . "を削除します.\n";
+            $this->userRepository->delete($id);
         }
         else{
             echo "ユーザーは存在しません、ユーザー削除を終了します\n";
@@ -33,10 +33,8 @@ class Main{
     }
 }
 
-
-
 $userRepository = new InMemoryUserRepository();
 $program = new Main($userRepository);
 $program->createUser('1234','tanaka');
 $program->createUser('2345','tanaka');
-$program->deleteUser('2345','tanaka');
+$program->deleteUser('1234');

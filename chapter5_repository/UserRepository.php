@@ -14,16 +14,23 @@ require "IUserRepository.php";
             echo $this->connection . " successfully end !" . "\nSQL is :" . $sql;
         }
 
-        public function find(UserName $name){
+        public function findByName(UserName $name){
             echo $this->connection . " start\n";
             $nameStr = $name->toString();
             $sql = "select * from users where name = $nameStr;";
             echo $this->connection . " successfully end !" . "\nSQL is :" . $sql;
+            return null;
         }
         public function delete(UserId $id){
             echo $this->connection . " start\n";
             echo "deleting user";
             $sql = "delete from users where id = $id;";
+            echo $this->connection . " successfully end !" . "\nSQL is :" . $sql;
+        }
+        public function findById(UserId $id){
+            echo $this->connection . " start\n";
+            echo "searching user";
+            $sql = "select * from users where id = $id;";
             echo $this->connection . " successfully end !" . "\nSQL is :" . $sql;
         }
     }
