@@ -5,4 +5,7 @@ class UserId{
         if($value==null)throw new Exception();
         $this->value = $value;
     }
+    public function toString(){
+        return $this->value;
+    }
 }

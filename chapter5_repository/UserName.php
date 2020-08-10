@@ -13,5 +13,8 @@
             }
             return False;
         }
+        public function toString(){
+            return $this->value;
+        }
     }
 
