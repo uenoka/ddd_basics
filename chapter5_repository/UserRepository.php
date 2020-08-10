@@ -15,9 +15,15 @@ require "IUserRepository.php";
         }
 
         public function find(UserName $name){
-            echo $this->connection . " start";
+            echo $this->connection . " start\n";
             $nameStr = $name->toString();
             $sql = "select * from users where name = $nameStr;";
+            echo $this->connection . " successfully end !" . "\nSQL is :" . $sql;
+        }
+        public function delete(UserId $id){
+            echo $this->connection . " start\n";
+            echo "deleting user";
+            $sql = "delete from users where id = $id;";
             echo $this->connection . " successfully end !" . "\nSQL is :" . $sql;
         }
     }
