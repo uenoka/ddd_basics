@@ -24,7 +24,7 @@ class Main{
     public function deleteUser(String $id ,String $userName){
         $user = new User(new UserId($id), new UserName($userName));
         $userSearvice = new UserSearvice($this->userRepository);
-        if($userSearvice->exists($user)){
+        if($userSearvice->exists($user)){// exists だと名前で検索して意図しない判定がされる
             $this->userRepository->delete($user->getUserId());
         }
         else{
