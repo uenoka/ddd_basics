@@ -2,13 +2,11 @@
     class User{
         private $name;
         private $userId;
-        function __construct(UserId $userId,string $name){
+        function __construct(UserId $userId,UserName $name){
             $this->userId = $userId;
             $this->changeName($name);
         }
-        public function changeName(string $name){
-            if ($name==null)throw new Exception();
-            if (strlen($name)<3)throw new Exception('ユーザー名は3文字以上です');
+        public function changeName(UserName $name){
             $this->name = $name;
         }
         public function equals(User $other){
