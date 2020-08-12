@@ -3,8 +3,9 @@ require_once 'User.php';
 require_once 'UserId.php';
 require_once 'UserName.php';
 require_once 'UserSearvice.php';
+require_once "IUserRegisterSearvice.php";
 require_once 'UserRepository.php';
-class UserRegisterSearvice{
+class UserRegisterSearvice implements IUserRegisterSearvice{
         private $userRepository;
         private $userSearvice;
         
@@ -13,8 +14,8 @@ class UserRegisterSearvice{
             $this->userSearvice = $userSearvice;
         }
         
-        public function handle(String $name){
-            $user = new User(new UserId(1234),new UserName($name));
+        public function handle(UserRegisterCommand $command){
+            $user = new User(new UserId(1234),new UserName($command->getName()));
             if($this->userSearvice->exists($user)){
                 echo "User is already exists";
             }else{
