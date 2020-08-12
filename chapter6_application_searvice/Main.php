@@ -1,13 +1,25 @@
 <?php
-require_once "UserApplicationSearvice.php";
+require_once "application/user/UserRegisterSearvice.php";
+require_once "application/user/UserDeleteSearvice.php";
+require_once "application/user/UserGetSearvice.php";
+require_once "application/user/UserUpdateSearvice.php";
 require_once "UserRepository.php";
 require_once "UserSearvice.php";
 require_once "UserUpdateCommand.php";
+
 $userRepository = new UserRepository();
 $userSearvice = new UserSearvice($userRepository);
-$app = new UserApplicationSearvice($userRepository,$userSearvice);
-$app->reguster("tanaka");
-$app->get(1234);
 
+$registerService = new UserRegisterSearvice($userRepository,$userSearvice);
+$registerService->handle("tanaka");
+
+$getService = new UserGetSearvice($userRepository);
+$registerService->handle(1234);
+
+$updateService = new UserUpdateSearvice($userRepository,$userSearvice);
 $command = new UserUpdateCommand('1234');
-$app->update($command);
+$updateService->handle($command);
+
+$deleteService = new UserDeleteSearvice($userRepository);
+$command = new UserUpdateCommand('1234');
+$deleteService->handle($command);
