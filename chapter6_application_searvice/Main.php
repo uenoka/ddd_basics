@@ -1,27 +1,27 @@
 <?php
-require_once "application/user/UserRegisterSearvice.php";
-require_once "application/user/UserDeleteSearvice.php";
-require_once "application/user/UserGetSearvice.php";
-require_once "application/user/UserUpdateSearvice.php";
-require_once "application/user/UserRegisterSearvice.php";
+require_once "application/user/UserRegisterService.php";
+require_once "application/user/UserDeleteService.php";
+require_once "application/user/UserGetService.php";
+require_once "application/user/UserUpdateService.php";
+require_once "application/user/UserRegisterService.php";
 require_once "UserRegisterCommand.php";
 require_once "UserRepository.php";
-require_once "UserSearvice.php";
+require_once "UserService.php";
 class Main{
     private $userRepository;
-    private $userSearvice;
-    private $userRegisterSearvice;
+    private $userService;
+    private $userRegisterService;
     
-    function __construct(IUserRepository $userRepository,UserSearvice $userSearvice,IUserRegisterSearvice $registerService){
+    function __construct(IUserRepository $userRepository,UserService $userService,IUserRegisterService $registerService){
         $this->userRepository = $userRepository;
-        $this->userSearvice = $userSearvice;
-        $this->userRegisterSearvice = $registerService;
+        $this->userService = $userService;
+        $this->userRegisterService = $registerService;
 
     }
 
     function register(String $name){
         $command = new UserRegisterCommand($name);
-        $this->userRegisterSearvice->handle($command);
+        $this->userRegisterService->handle($command);
     }
 
     function update(){
@@ -38,21 +38,21 @@ class Main{
 
 }
 $userRepository = new UserRepository();
-$userSearvice = new UserSearvice($userRepository);
-$registerService = new UserRegisterSearvice($userRepository,$userSearvice);
-$main = new Main($userRepository,$userSearvice,$registerService);
+$userService = new UserService($userRepository);
+$registerService = new UserRegisterService($userRepository,$userService);
+$main = new Main($userRepository,$userService,$registerService);
 $main->register("test name");
 
-// $registerService = new UserRegisterSearvice();
+// $registerService = new UserRegisterService();
 // $registerService->handle("tanaka");
 
-// $getService = new UserGetSearvice($userRepository);
+// $getService = new UserGetService($userRepository);
 // $registerService->handle(1234);
 
-// $updateService = new UserUpdateSearvice($userRepository,$userSearvice);
+// $updateService = new UserUpdateService($userRepository,$userService);
 // $command = new UserUpdateCommand('1234');
 // $updateService->handle($command);
 
-// $deleteService = new UserDeleteSearvice($userRepository);
+// $deleteService = new UserDeleteService($userRepository);
 // $command = new UserUpdateCommand('1234');
 // $deleteService->handle($command);
