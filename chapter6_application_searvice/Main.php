@@ -6,9 +6,31 @@ require_once "application/user/UserUpdateSearvice.php";
 require_once "UserRepository.php";
 require_once "UserSearvice.php";
 require_once "UserUpdateCommand.php";
+class Main{
+    private $userRepository;
+    private $userSearvice;
+    private $userRegisterSearvice;
+    
+    function __construct($userRepository,$userSearvice){
+        $this->userRepository = $userRepository;
+        $this->userSearvice = $userSearvice;
+    }
+    
+    function register(IUserRegisterSearvice $searvice){
+        $this->$userRegisterSearvice = $searvice;
+    }
+    
+    function update(){
+        echo "none";
+    }
+    function delete(){
+        echo "none";
+    }
+    function get(){
+        echo "none";
+    }
 
-$userRepository = new UserRepository();
-$userSearvice = new UserSearvice($userRepository);
+}
 
 $registerService = new UserRegisterSearvice($userRepository,$userSearvice);
 $registerService->handle("tanaka");
