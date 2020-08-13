@@ -3,7 +3,7 @@
 require 'User.php';
 require 'UserId.php';
 require 'UserName.php';
-require 'UserSearvice.php';
+require 'UserService.php';
 require 'InMemoryUserRepository.php';
 class Main{
     private $userRepository;
@@ -13,8 +13,8 @@ class Main{
 
     public function createUser(String $id ,String $userName){
         $user = new User(new UserId($id), new UserName($userName));
-        $userSearvice = new UserSearvice($this->userRepository);
-        if($userSearvice->exists($user)){
+        $userService = new UserService($this->userRepository);
+        if($userService->exists($user)){
             echo "ユーザーが存在しています\nユーザーを作成できませんでした。\n\n";
         }
         else{
