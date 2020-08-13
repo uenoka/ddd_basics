@@ -1,32 +1,15 @@
 <?php
+require_once "UserDeleteCommand.php";
 
 class DeleteClient{
-    private $userRepository;
-    private $userService;
-    private $userRegisterService;
-    private $userUpdateService;
-    function __construct(IUserRepository $userRepository,UserService $userService,IUserRegisterService $registerService){
-        $this->userRepository = $userRepository;
-        $this->userService = $userService;
-        $this->userRegisterService = $registerService;
+    private $userDeleteService;
+    function __construct(IUserDeleteService $userDeleteService){
+        $this->userDeleteService = $userDeleteService;
     }
 
-    function register(String $name){
-        $command = new UserRegisterCommand($name);
-        $this->userRegisterService->handle($command);
-    }
-
-    function update(String $id){
-        $command = new UserUpdateCommand($id);
-        $this->userUpdateService->handle($command);
-    }
-
-    function delete(){
-        echo "none";
-    }
-
-    function get(){
-        echo "none";
+    function delete(String $id){
+        $command = new UserDeleteCommand($id);
+        $this->userDeleteService->handle($command);
     }
 
 }

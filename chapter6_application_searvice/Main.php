@@ -31,6 +31,10 @@ $getService = new UserGetService($userRepository);
 $getClient = new GetClient($getService);
 $getClient->get("1234");
 
+echo "\n==========Delete start==========\n";
+$deleteService = new UserDeleteService($userRepository);
+$deleteClient = new DeleteClient($deleteService);
+$deleteClient->delete("1234");
 
 
 // $registerService = new UserRegisterService();

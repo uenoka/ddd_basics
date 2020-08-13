@@ -1,6 +1,6 @@
 <?php
 require_once "application/user/IUserGetService.php";
-
+require_once "UserData.php";
 class UserGetService implements IUserGetService{
     private $userRepository;
 
