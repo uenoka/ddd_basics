@@ -5,8 +5,9 @@ require_once 'UserName.php';
 require_once 'UserService.php';
 require_once 'InMemoryUserRepository.php';
 require_once 'UserRepository.php';
+require_once 'IUserUpdateService.php';
 
-class UserUpdateService{
+class UserUpdateService implements IUserUpdateService{
     private $userRepository;
     private $userService;
     function __construct(IUserRepository $userRepository,UserService $userService){ 

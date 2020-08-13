@@ -19,7 +19,7 @@ require_once "IUserRepository.php";
         public function findByName(UserName $name){
             echo $this->connection . " start\n";
             $nameStr = $name->toString();
-            $sql = "select * from users where name = $nameStr;";
+            $sql = "select * from users where name = $nameStr;\n";
             echo $this->connection . " successfully end !" . "\nSQL is :" . $sql;
             return null;
         }
@@ -27,15 +27,15 @@ require_once "IUserRepository.php";
         public function delete(UserId $id){
             echo $this->connection . " start\n";
             echo "deleting user";
-            $sql = "delete from users where id = $id;";
+            $sql = "delete from users where id = $id;\n";
             echo $this->connection . " successfully end !" . "\nSQL is :" . $sql;
         }
 
         public function findById(UserId $id){
             echo $this->connection . " start\n";
-            echo "searching user";
+            echo "searching user\n";
             $idstr=$id->toString();
-            $sql = "select * from users where id = $idstr;";
+            $sql = "select * from users where id = $idstr;\n";
             echo $this->connection . " successfully end !" . "\nSQL is :" . $sql;
         }
     }

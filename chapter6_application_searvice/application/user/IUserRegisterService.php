@@ -1,5 +1,4 @@
-<?php 
-require_once "UserUpdateCommand.php";
+<?php
 interface IUserRegisterService{
     public function handle(UserRegisterCommand $command);
 }
